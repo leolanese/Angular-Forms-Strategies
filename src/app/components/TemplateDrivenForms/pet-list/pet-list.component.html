@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Cats ({{ cats.length }})</h2>
+  <ul>
+    <li *ngFor="let cat of cats; let i = index">
+      <input type="checkbox" [(ngModel)]="cat.isChecked">{{ cat.name }}
+      <div>
+        <button (click)="modifyCat(i)">Modify</button>
+        <button (click)="deleteCat(i)">Delete</button>
+      </div>
+    </li>
+  </ul>
+  <div>
+    <input [(ngModel)]="newCatName" placeholder="Add new cat" />
+    <button class="add-button" (click)="addCat()">Add Cat</button>
+  </div>
+
+  <h2>Dogs ({{ dogs.length }})</h2>
+  <ul>
+    <li *ngFor="let dog of dogs; let i = index">
+      <input type="checkbox" [(ngModel)]="dog.isChecked">{{ dog.name }}
+      <div>
+        <button (click)="modifyDog(i)">Modify</button>
+        <button (click)="deleteDog(i)">Delete</button>
+      </div>
+    </li>
+  </ul>
+  <div>
+    <input [(ngModel)]="newDogName" placeholder="Add new dog" />
+    <button class="add-button" (click)="addDog()">Add Dog</button>
+  </div>
+</div>
