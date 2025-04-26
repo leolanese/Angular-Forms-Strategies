@@ -82,3 +82,18 @@ Key characteristics:
 - Simpler than reactive forms but more powerful than template-driven
 - Changes are tracked through signals instead of change detection
 - Good balance between simplicity and control
+
+
+---
+
+### :100: <i>Thanks!</i>
+#### Now, don't be an stranger. Let's stay in touch!
+
+<a href="https://github.com/leolanese" target="_blank" rel="noopener noreferrer">
+  <img src="https://scastiel.dev/api/image/leolanese?dark&removeLink" alt="leolanese’s GitHub image" width="600" height="314" />
+</a>
+
+##### :radio_button: Linkedin: <a href="https://www.linkedin.com/in/leolanese/" target="_blank">LeoLanese</a>
+##### :radio_button: Twitter: <a href="https://twitter.com/LeoLanese" target="_blank">@LeoLanese</a>
+##### :radio_button: DEV.to: <a href="https://www.dev.to/leolanese" target="_blank">Blog</a>
+##### :radio_button: Questions / Suggestion / Recommendation: developer@leolanese.com
