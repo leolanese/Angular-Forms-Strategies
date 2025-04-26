@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { cats, Pet } from '../../ReactiveForm/mocks-pets';
+import { Item, items } from '../../ReactiveForm/mocks-pets';
 
 @Component({
   selector: 'app-pet-list',
@@ -17,30 +17,30 @@ import { cats, Pet } from '../../ReactiveForm/mocks-pets';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetListComponent {
-  cats: Pet[] = [...cats];
-  newCatName = '';
+  items: Item[] = [...items];
+  newItemName = '';
 
-  addCat(): void {
-    if (this.newCatName.trim()) {
-      this.cats.push({ name: this.newCatName.trim(), isChecked: false });
-      this.newCatName = '';
+  addItem(): void {
+    if (this.newItemName.trim()) {
+      this.items.push({ name: this.newItemName.trim(), isChecked: false });
+      this.newItemName = '';
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 
-  deleteCat(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.cats[index].name}"?`)) {
-      this.cats.splice(index, 1);
+  deleteItem(index: number): void {
+    if (confirm(`Are you sure you want to delete "${this.items[index].name}"?`)) {
+      this.items.splice(index, 1);
     }
   }
 
-  modifyCat(index: number): void {
-    const newName = prompt('Modify Cat Name:', this.cats[index].name);
+  modifyItem(index: number): void {
+    const newName = prompt('Modify Item Name:', this.items[index].name);
     if (newName?.trim()) {
-      this.cats[index].name = newName.trim();
+      this.items[index].name = newName.trim();
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 }

@@ -1,18 +1,18 @@
 <h2>Template Driven Forms</h2>
 <div class="container">
-  <h2>Cats</h2>
+  <h2>Items</h2>
   <ul>
-    <li *ngFor="let cat of cats; let i = index">
-      <input type="checkbox" [(ngModel)]="cat.isChecked">
-      <span>{{ cat.name }}</span>
+    <li *ngFor="let item of items; let i = index">
+      <input type="checkbox" [(ngModel)]="item.isChecked">
+      <span>{{ item.name }}</span>
       <div>
-        <button (click)="modifyCat(i)">Modify</button>
-        <button (click)="deleteCat(i)">Delete</button>
+        <button (click)="modifyItem(i)">Modify</button>
+        <button (click)="deleteItem(i)">Delete</button>
       </div>
     </li>
   </ul>
   <div class="add-pet">
-    <input type="text" [(ngModel)]="newCatName" placeholder="Enter cat name">
-    <button class="add-button" (click)="addCat()">Add Cat</button>
+    <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
+    <button class="add-button" (click)="addItem()">Add Item</button>
   </div>
 </div>

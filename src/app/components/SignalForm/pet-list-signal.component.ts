@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { cats, Pet } from '../ReactiveForm/mocks-pets';
+import { Item, items } from '../ReactiveForm/mocks-pets';
 
 @Component({
   selector: 'app-pet-list-signal',
@@ -15,20 +15,20 @@ import { cats, Pet } from '../ReactiveForm/mocks-pets';
   template: `
     <h2>Signal Forms</h2>
     <div class="container">
-      <h2>Cats</h2>
+      <h2>Items</h2>
       <ul>
-        <li *ngFor="let cat of cats(); let i = index">
-          <input type="checkbox" [(ngModel)]="cat.isChecked">
-          <span>{{ cat.name }}</span>
+        <li *ngFor="let item of items(); let i = index">
+          <input type="checkbox" [(ngModel)]="item.isChecked">
+          <span>{{ item.name }}</span>
           <div>
-            <button (click)="modifyCat(i)">Modify</button>
-            <button (click)="deleteCat(i)">Delete</button>
+            <button (click)="modifyItem(i)">Modify</button>
+            <button (click)="deleteItem(i)">Delete</button>
           </div>
         </li>
       </ul>
       <div class="add-pet">
-        <input type="text" [(ngModel)]="newCatName" placeholder="Enter cat name">
-        <button class="add-button" (click)="addCat()">Add Cat</button>
+        <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
+        <button class="add-button" (click)="addItem()">Add Item</button>
       </div>
     </div>
   `,
@@ -36,35 +36,35 @@ import { cats, Pet } from '../ReactiveForm/mocks-pets';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetListSignalComponent {
-  // Signals for pet lists
-  cats = signal<Pet[]>([...cats]);
+  // Signals for items list
+  items = signal<Item[]>([...items]);
 
   // Template form bindings
-  newCatName = '';
+  newItemName = '';
 
-  addCat(): void {
-    if (this.newCatName.trim()) {
-      this.cats.update(cats => [...cats, { name: this.newCatName.trim(), isChecked: false }]);
-      this.newCatName = '';
+  addItem(): void {
+    if (this.newItemName.trim()) {
+      this.items.update(items => [...items, { name: this.newItemName.trim(), isChecked: false }]);
+      this.newItemName = '';
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 
-  deleteCat(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.cats()[index].name}"?`)) {
-      this.cats.update(cats => cats.filter((_, i) => i !== index));
+  deleteItem(index: number): void {
+    if (confirm(`Are you sure you want to delete "${this.items()[index].name}"?`)) {
+      this.items.update(items => items.filter((_, i) => i !== index));
     }
   }
 
-  modifyCat(index: number): void {
-    const newName = prompt('Modify Cat Name:', this.cats()[index].name);
+  modifyItem(index: number): void {
+    const newName = prompt('Modify Item Name:', this.items()[index].name);
     if (newName?.trim()) {
-      this.cats.update(cats => 
-        cats.map((cat, i) => i === index ? { ...cat, name: newName.trim() } : cat)
+      this.items.update(items => 
+        items.map((item, i) => i === index ? { ...item, name: newName.trim() } : item)
       );
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 } 

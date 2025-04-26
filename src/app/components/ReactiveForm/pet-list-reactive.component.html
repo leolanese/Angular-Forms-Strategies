@@ -1,20 +1,20 @@
 <h2>Reactive Forms</h2>
 <div class="container">
   <form [formGroup]="petForm">
-    <h2>Cats</h2>
-    <ul formArrayName="cats">
-      <li *ngFor="let cat of catsArray.controls; let i = index" [formGroupName]="i">
+    <h2>Items</h2>
+    <ul formArrayName="items">
+      <li *ngFor="let item of itemsArray.controls; let i = index" [formGroupName]="i">
         <input type="checkbox" formControlName="isChecked">
-        <span>{{ cat.get('name')?.value }}</span>
+        <span>{{ item.get('name')?.value }}</span>
         <div>
-          <button (click)="modifyCat(i)">Modify</button>
-          <button (click)="deleteCat(i)">Delete</button>
+          <button (click)="modifyItem(i)">Modify</button>
+          <button (click)="deleteItem(i)">Delete</button>
         </div>
       </li>
     </ul>
     <div class="add-pet">
-      <input type="text" formControlName="newCatName" placeholder="Enter cat name">
-      <button class="add-button" (click)="addCat()">Add Cat</button>
+      <input type="text" formControlName="newItemName" placeholder="Enter item name">
+      <button class="add-button" (click)="addItem()">Add Item</button>
     </div>
   </form>
 </div>

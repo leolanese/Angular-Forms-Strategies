@@ -1,9 +1,9 @@
-export interface Pet {
+export interface Item {
   name: string;
   isChecked: boolean;
 }
 
-export const cats: Pet[] = [
+export const items: Item[] = [
   { name: 'Mittens', isChecked: false },
   { name: 'Whiskers', isChecked: false }
 ];

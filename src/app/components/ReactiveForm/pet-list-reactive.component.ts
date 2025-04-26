@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { cats, Pet } from './mocks-pets';
+import { Item, items } from './mocks-pets';
 
 @Component({
   selector: 'app-pet-list-reactive-driven',
@@ -21,56 +21,55 @@ export class PetListComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.petForm = this.fb.group({
-      cats: this.fb.array([]),
-      newCatName: ['', Validators.required]
+      items: this.fb.array([]),
+      newItemName: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    // Initialize cats FormArray
-    this.loadPets('cats', cats);
+    // Initialize items FormArray
+    this.loadItems(items);
   }
 
   // Helper to get FormArray controls
-  get catsArray(): FormArray {
-    return this.petForm.get('cats') as FormArray;
+  get itemsArray(): FormArray {
+    return this.petForm.get('items') as FormArray;
   }
 
-  loadPets(type: 'cats', pets: Pet[]): void {
-    const petArray = this.catsArray;
-    pets.forEach(pet => {
-      petArray.push(this.fb.group({
-        name: [pet.name, Validators.required],
-        isChecked: [pet.isChecked]
+  loadItems(items: Item[]): void {
+    items.forEach(item => {
+      this.itemsArray.push(this.fb.group({
+        name: [item.name, Validators.required],
+        isChecked: [item.isChecked]
       }));
     });
   }
 
-  addCat(): void {
-    const newCatName = this.petForm.get('newCatName')?.value;
-    if (newCatName.trim()) {
-      this.catsArray.push(this.fb.group({
-        name: [newCatName, Validators.required],
+  addItem(): void {
+    const newItemName = this.petForm.get('newItemName')?.value;
+    if (newItemName.trim()) {
+      this.itemsArray.push(this.fb.group({
+        name: [newItemName, Validators.required],
         isChecked: [false]
       }));
-      this.petForm.get('newCatName')?.reset();
+      this.petForm.get('newItemName')?.reset();
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 
-  deleteCat(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.catsArray.at(index).value.name}"?`)) {
-      this.catsArray.removeAt(index);
+  deleteItem(index: number): void {
+    if (confirm(`Are you sure you want to delete "${this.itemsArray.at(index).value.name}"?`)) {
+      this.itemsArray.removeAt(index);
     }
   }
 
-  modifyCat(index: number): void {
-    const newName = prompt('Modify Cat Name:', this.catsArray.at(index).get('name')?.value);
+  modifyItem(index: number): void {
+    const newName = prompt('Modify Item Name:', this.itemsArray.at(index).get('name')?.value);
     if (newName && newName.trim()) {
-      this.catsArray.at(index).patchValue({ name: newName.trim() });
+      this.itemsArray.at(index).patchValue({ name: newName.trim() });
     } else {
-      alert('Cat name cannot be empty.');
+      alert('Item name cannot be empty.');
     }
   }
 }
