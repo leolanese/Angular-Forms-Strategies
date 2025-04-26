@@ -76,13 +76,13 @@ export class PetListSignalComponent {
 ```
 
 ## Key characteristics:
-- Uses Angular's new signal() API for state management
-- More modern approach to state management
-- Better performance through fine-grained reactivity
-- Simpler than reactive forms but more powerful than template-driven
-- Changes are tracked through signals instead of change detection
-- Good balance between simplicity and control
-- Used `updateOn` for better Performance & UX
+✅- Uses Angular's new signal() API for state management
+✅- More modern approach to state management
+✅- Better performance through fine-grained reactivity
+✅- Simpler than reactive forms but more powerful than template-driven
+✅- Changes are tracked through signals instead of change detection
+✅- Good balance between simplicity and control
+✅- Used `updateOn` for better Performance & UX
 
 ---
 
