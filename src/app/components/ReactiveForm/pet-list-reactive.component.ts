@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { cats, dogs, Pet } from './mocks-pets';
+import { cats, Pet } from './mocks-pets';
 
 @Component({
   selector: 'app-pet-list-reactive-driven',
@@ -18,22 +18,17 @@ import { cats, dogs, Pet } from './mocks-pets';
 })
 export class PetListComponent implements OnInit {
   petForm: FormGroup;
-  private fb = inject(FormBuilder);
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.petForm = this.fb.group({
       cats: this.fb.array([]),
-      dogs: this.fb.array([]),
-      newCatName: ['', Validators.required],
-      newDogName: ['', Validators.required],
-      age: [null, [Validators.required, Validators.min(0)]]
+      newCatName: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    // Initialize cats and dogs FormArrays
+    // Initialize cats FormArray
     this.loadPets('cats', cats);
-    this.loadPets('dogs', dogs);
   }
 
   // Helper to get FormArray controls
@@ -41,12 +36,8 @@ export class PetListComponent implements OnInit {
     return this.petForm.get('cats') as FormArray;
   }
 
-  get dogsArray(): FormArray {
-    return this.petForm.get('dogs') as FormArray;
-  }
-
-  loadPets(type: 'cats' | 'dogs', pets: Pet[]): void {
-    const petArray = type === 'cats' ? this.catsArray : this.dogsArray;
+  loadPets(type: 'cats', pets: Pet[]): void {
+    const petArray = this.catsArray;
     pets.forEach(pet => {
       petArray.push(this.fb.group({
         name: [pet.name, Validators.required],
@@ -68,28 +59,9 @@ export class PetListComponent implements OnInit {
     }
   }
 
-  addDog(): void {
-    const newDogName = this.petForm.get('newDogName')?.value;
-    if (newDogName.trim()) {
-      this.dogsArray.push(this.fb.group({
-        name: [newDogName, Validators.required],
-        isChecked: [false]
-      }));
-      this.petForm.get('newDogName')?.reset();
-    } else {
-      alert('Dog name cannot be empty.');
-    }
-  }
-
   deleteCat(index: number): void {
     if (confirm(`Are you sure you want to delete "${this.catsArray.at(index).value.name}"?`)) {
       this.catsArray.removeAt(index);
-    }
-  }
-
-  deleteDog(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.dogsArray.at(index).value.name}"?`)) {
-      this.dogsArray.removeAt(index);
     }
   }
 
@@ -101,14 +73,4 @@ export class PetListComponent implements OnInit {
       alert('Cat name cannot be empty.');
     }
   }
-
-  modifyDog(index: number): void {
-    const newName = prompt('Modify Dog Name:', this.dogsArray.at(index).get('name')?.value);
-    if (newName && newName.trim()) {
-      this.dogsArray.at(index).patchValue({ name: newName.trim() }); // Change here
-    } else {
-      alert('Dog name cannot be empty.');
-    }
-  }
-
 }

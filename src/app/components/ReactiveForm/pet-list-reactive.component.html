@@ -1,35 +1,20 @@
 <h2>Reactive Forms</h2>
 <div class="container">
   <form [formGroup]="petForm">
-    <h2>Cats ({{ catsArray.length }})</h2>
+    <h2>Cats</h2>
     <ul formArrayName="cats">
-
       <li *ngFor="let cat of catsArray.controls; let i = index" [formGroupName]="i">
-        <input type="checkbox" formControlName="isChecked">{{ cat.get('name')?.value }}
+        <input type="checkbox" formControlName="isChecked">
+        <span>{{ cat.get('name')?.value }}</span>
         <div>
           <button (click)="modifyCat(i)">Modify</button>
           <button (click)="deleteCat(i)">Delete</button>
         </div>
       </li>
     </ul>
-    <div>
-      <input formControlName="newCatName" placeholder="Add new cat" />
+    <div class="add-pet">
+      <input type="text" formControlName="newCatName" placeholder="Enter cat name">
       <button class="add-button" (click)="addCat()">Add Cat</button>
-    </div>
-
-    <h2>Dogs ({{ dogsArray.length }})</h2>
-    <ul formArrayName="dogs">
-      <li *ngFor="let dog of dogsArray.controls; let i = index" [formGroupName]="i">
-        <input type="checkbox" formControlName="isChecked">{{ dog.get('name')?.value }}
-        <div>
-          <button (click)="modifyDog(i)">Modify</button>
-          <button (click)="deleteDog(i)">Delete</button>
-        </div>
-      </li>
-    </ul>
-    <div>
-      <input formControlName="newDogName" placeholder="Add new dog" />
-      <button class="add-button" (click)="addDog()">Add Dog</button>
     </div>
   </form>
 </div>
