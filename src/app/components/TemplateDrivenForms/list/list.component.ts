@@ -30,9 +30,7 @@ export class ListComponent {
   }
 
   deleteItem(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.items[index].name}"?`)) {
-      this.items.splice(index, 1);
-    }
+    this.items.splice(index, 1);
   }
 
   modifyItem(index: number): void {

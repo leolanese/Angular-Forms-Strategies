@@ -1,4 +1,10 @@
 <h2>Template Driven Forms</h2>
+<div class="add-item">
+  <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
+  <p>{{ newItemName }}</p>
+  <button class="add-button" (click)="addItem()">Add Item</button>
+</div>
+
 <div class="container">
   <h2>Items</h2>
   <ul>
@@ -11,9 +17,4 @@
       </div>
     </li>
   </ul>
-  <div class="add-item">
-    <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
-    <p>{{ newItemName }}</p>
-    <button class="add-button" (click)="addItem()">Add Item</button>
-  </div>
 </div>

@@ -4,6 +4,8 @@ export interface Item {
 }
 
 export const items: Item[] = [
-  { name: 'Mittens', isChecked: false },
-  { name: 'Whiskers', isChecked: false }
+  { name: 'item1', isChecked: false },
+  { name: 'item2', isChecked: false },
+  { name: 'item3', isChecked: false },
+  { name: 'item4', isChecked: false },
 ];

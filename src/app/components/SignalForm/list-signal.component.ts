@@ -53,9 +53,7 @@ export class ListSignalComponent {
   }
 
   deleteItem(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.items()[index].name}"?`)) {
-      this.items.update(items => items.filter((_, i) => i !== index));
-    }
+    this.items.update(items => items.filter((_, i) => i !== index));
   }
 
   modifyItem(index: number): void {

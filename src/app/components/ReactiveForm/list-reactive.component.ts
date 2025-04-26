@@ -60,9 +60,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteItem(index: number): void {
-    if (confirm(`Are you sure you want to delete "${this.itemsArray.at(index).value.name}"?`)) {
-      this.itemsArray.removeAt(index);
-    }
+    this.itemsArray.removeAt(index);
   }
 
   modifyItem(index: number): void {

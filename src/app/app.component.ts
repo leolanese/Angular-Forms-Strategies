@@ -40,14 +40,3 @@ import { ListComponent } from './components/ReactiveForm/list-reactive.component
 export class AppComponent {
   title = 'Angular18-Forms';
 }
-
-/*
-
-reactive-driven forms
-
-ReactiveFormsModule is used instead of FormsModule 
-FormBuilder is utilized to construct FormGroup and FormArray.
-FormArray holds the lists of cats and dogs, where each pet is a form group containing name and isChecked controls.
-The form controls are accessed dynamically using the index in the template.
-
-*/
