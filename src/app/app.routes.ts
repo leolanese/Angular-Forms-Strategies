@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ListSignalComponent } from './components/SignalForm/list-signal.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'template-driven', pathMatch: 'full' },
@@ -15,6 +14,7 @@ export const routes: Routes = [
   },
   {
     path: 'signal',
-    component: ListSignalComponent
+    loadComponent: () => import('./components/SignalForm/list-signal.component')
+      .then(m => m.ListSignalComponent)
   }
 ];
