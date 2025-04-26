@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { PetListComponent } from './components/ReactiveForm/pet-list-reactive.component';
+import { ListComponent } from './components/ReactiveForm/list-reactive.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { PetListComponent } from './components/ReactiveForm/pet-list-reactive.co
     CommonModule, 
     RouterOutlet, 
     RouterLink,
-    PetListComponent
+    ListComponent
   ],
   template: `
     <nav>

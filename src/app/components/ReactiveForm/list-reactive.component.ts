@@ -1,25 +1,26 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Item, items } from './mocks-pets';
 
 @Component({
-  selector: 'app-pet-list-reactive-driven',
+  selector: 'app-item-list-reactive-driven',
   standalone: true,
   imports: [
     CommonModule, 
     ReactiveFormsModule,
     RouterOutlet
   ],
-  templateUrl: './pet-list-reactive.component.html',
-  styleUrls: ['./pet-list.component.scss'],
+  templateUrl: './list-reactive.component.html',
+  styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetListComponent implements OnInit {
+export class ListComponent implements OnInit {
   petForm: FormGroup;
+  private fb: FormBuilder = inject(FormBuilder);
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.petForm = this.fb.group({
       items: this.fb.array([]),
       newItemName: ['', Validators.required]

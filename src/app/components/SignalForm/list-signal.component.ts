@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { Item, items } from '../ReactiveForm/mocks-pets';
 
 @Component({
-  selector: 'app-pet-list-signal',
+  selector: 'app-item-list-signal',
   standalone: true,
   imports: [
     CommonModule,
@@ -26,16 +26,16 @@ import { Item, items } from '../ReactiveForm/mocks-pets';
           </div>
         </li>
       </ul>
-      <div class="add-pet">
+      <div class="add-item">
         <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
         <button class="add-button" (click)="addItem()">Add Item</button>
       </div>
     </div>
   `,
-  styleUrls: ['../ReactiveForm/pet-list.component.scss'],
+  styleUrls: ['../ReactiveForm/list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetListSignalComponent {
+export class ListSignalComponent {
   // Signals for items list
   items = signal<Item[]>([...items]);
 

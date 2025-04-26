@@ -5,18 +5,18 @@ import { RouterOutlet } from '@angular/router';
 import { Item, items } from '../../ReactiveForm/mocks-pets';
 
 @Component({
-  selector: 'app-pet-list',
+  selector: 'app-item-list',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
     RouterOutlet
   ],
-  templateUrl: './pet-list.component.html',
-  styleUrls: ['./pet-list.component.scss'],
+  templateUrl: './list.component.html',
+  styleUrls: ['../../ReactiveForm/list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetListComponent {
+export class ListComponent {
   items: Item[] = [...items];
   newItemName = '';
 
