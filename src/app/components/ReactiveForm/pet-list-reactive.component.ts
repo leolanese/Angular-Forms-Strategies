@@ -1,8 +1,8 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy,Component,OnInit} from '@angular/core';
-import {FormArray,FormBuilder,FormGroup,ReactiveFormsModule,Validators} from '@angular/forms';
-import {RouterOutlet} from '@angular/router';
-import {cats,dogs,Pet} from './mocks-pets';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
+import { cats, dogs, Pet } from './mocks-pets';
 
 @Component({
   selector: 'app-pet-list-reactive-driven',
@@ -18,13 +18,15 @@ import {cats,dogs,Pet} from './mocks-pets';
 })
 export class PetListComponent implements OnInit {
   petForm: FormGroup;
+  private fb = inject(FormBuilder);
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.petForm = this.fb.group({
       cats: this.fb.array([]),
       dogs: this.fb.array([]),
       newCatName: ['', Validators.required],
-      newDogName: ['', Validators.required]
+      newDogName: ['', Validators.required],
+      age: [null, [Validators.required, Validators.min(0)]]
     });
   }
 
