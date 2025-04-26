@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Item, items } from '../../ReactiveForm/mocks-pets';
+import { Item, items } from '../../mocks/mocks-items';
 
 @Component({
   selector: 'app-item-list',

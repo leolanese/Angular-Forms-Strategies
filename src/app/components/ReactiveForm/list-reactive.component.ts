@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Item, items } from './mocks-pets';
+import { Item, items } from '../mocks/mocks-items';
 
 @Component({
   selector: 'app-item-list-reactive-driven',

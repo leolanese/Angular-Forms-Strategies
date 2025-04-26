@@ -7,13 +7,14 @@
         <input type="checkbox" formControlName="isChecked">
         <span>{{ item.get('name')?.value }}</span>
         <div>
-          <button (click)="modifyItem(i)">Modify</button>
+          <button (click)="modifyItem(i)">Edit</button>
           <button (click)="deleteItem(i)">Delete</button>
         </div>
       </li>
     </ul>
     <div class="add-item">
       <input type="text" formControlName="newItemName" placeholder="Enter item name">
+      <span>{{ petForm.get('newItemName')?.value }}</span>
       <button class="add-button" (click)="addItem()">Add Item</button>
     </div>
   </form>

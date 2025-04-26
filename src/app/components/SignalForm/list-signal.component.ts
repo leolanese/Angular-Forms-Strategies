@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Item, items } from '../ReactiveForm/mocks-pets';
+import { Item, items } from '../mocks/mocks-items';
 
 @Component({
   selector: 'app-item-list-signal',
@@ -21,13 +21,14 @@ import { Item, items } from '../ReactiveForm/mocks-pets';
           <input type="checkbox" [(ngModel)]="item.isChecked">
           <span>{{ item.name }}</span>
           <div>
-            <button (click)="modifyItem(i)">Modify</button>
+            <button (click)="modifyItem(i)">Edit</button>
             <button (click)="deleteItem(i)">Delete</button>
           </div>
         </li>
       </ul>
       <div class="add-item">
         <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
+        <p>{{ newItemName }}</p>
         <button class="add-button" (click)="addItem()">Add Item</button>
       </div>
     </div>
