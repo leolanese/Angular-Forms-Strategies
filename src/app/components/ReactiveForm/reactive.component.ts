@@ -44,7 +44,7 @@ export class ReactiveComponent implements OnInit {
     this.petForm = this.fb.group({
       items: this.fb.array([]),
       newItemName: ['', Validators.required]
-    });
+    }, { updateOn: 'blur' });
   }
 
   ngOnInit(): void {

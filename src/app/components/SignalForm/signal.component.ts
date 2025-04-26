@@ -28,8 +28,8 @@ import { Item, items } from '../mocks/mocks-items';
       </ul>
       <div class="add-item">
         <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
-        <p>{{ newItemName }}</p>
         <button class="add-button" (click)="addItem()">Add Item</button>
+        <span>{{ newItemName }}</span>
       </div>
     </div>
   `,
@@ -66,4 +66,4 @@ export class SignalComponent {
       alert('Item name cannot be empty.');
     }
   }
-} 
+}
