@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { Item, items } from '../mocks/mocks-items';
 
 @Component({
-  selector: 'app-item-list-signal',
+  selector: 'app-signal',
   standalone: true,
   imports: [
     CommonModule,
@@ -33,10 +33,10 @@ import { Item, items } from '../mocks/mocks-items';
       </div>
     </div>
   `,
-  styleUrls: ['../ReactiveForm/list.component.scss'],
+  styleUrls: ['../ReactiveForm/reactive.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListSignalComponent {
+export class SignalComponent {
   // Signals for items list
   items = signal<Item[]>([...items]);
 

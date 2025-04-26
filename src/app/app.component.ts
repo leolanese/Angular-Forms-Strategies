@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ListComponent } from './components/ReactiveForm/list-reactive.component';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +8,7 @@ import { ListComponent } from './components/ReactiveForm/list-reactive.component
   imports: [
     CommonModule, 
     RouterOutlet, 
-    RouterLink,
-    ListComponent
+    RouterLink
   ],
   template: `
     <nav>
@@ -38,5 +36,5 @@ import { ListComponent } from './components/ReactiveForm/list-reactive.component
   `]
 })
 export class AppComponent {
-  title = 'Angular18-Forms';
+  title = 'Angular 19 - Forms';
 }

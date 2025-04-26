@@ -5,18 +5,38 @@ import { RouterOutlet } from '@angular/router';
 import { Item, items } from '../mocks/mocks-items';
 
 @Component({
-  selector: 'app-item-list-reactive-driven',
+  selector: 'app-reactive',
   standalone: true,
   imports: [
-    CommonModule, 
-    ReactiveFormsModule,
-    RouterOutlet
+    CommonModule, ReactiveFormsModule, RouterOutlet
   ],
-  templateUrl: './list-reactive.component.html',
-  styleUrls: ['./list.component.scss'],
+  template: `
+    <h2>Reactive Forms</h2>
+      <div class="container">
+        <form [formGroup]="petForm">
+          <h2>Items</h2>
+          <ul formArrayName="items">
+            <li *ngFor="let item of itemsArray.controls; let i = index" [formGroupName]="i">
+              <input type="checkbox" formControlName="isChecked">
+              <span>{{ item.get('name')?.value }}</span>
+              <div>
+                <button (click)="modifyItem(i)">Edit</button>
+                <button (click)="deleteItem(i)">Delete</button>
+              </div>
+            </li>
+          </ul>
+          <div class="add-item">
+            <input type="text" formControlName="newItemName" placeholder="Enter item name">
+            <button class="add-button" (click)="addItem()">Add Item</button>
+            <span>{{ petForm.get('newItemName')?.value }}</span>
+          </div>
+        </form>
+      </div>  
+  `,
+  styleUrls: ['./reactive.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent implements OnInit {
+export class ReactiveComponent implements OnInit {
   petForm: FormGroup;
   private fb: FormBuilder = inject(FormBuilder);
 

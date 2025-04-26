@@ -5,18 +5,36 @@ import { RouterOutlet } from '@angular/router';
 import { Item, items } from '../../mocks/mocks-items';
 
 @Component({
-  selector: 'app-item-list',
+  selector: 'app-template-driven',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
-    RouterOutlet
+    CommonModule, FormsModule, RouterOutlet
   ],
-  templateUrl: './list.component.html',
-  styleUrls: ['../../ReactiveForm/list.component.scss'],
+  template: `
+    <h2>Template Driven Forms</h2>
+      <div class="container">
+        <h2>Items</h2>
+        <ul>
+          <li *ngFor="let item of items; let i = index">
+            <input type="checkbox" [(ngModel)]="item.isChecked">
+            <span>{{ item.name }}</span>
+            <div>
+              <button (click)="modifyItem(i)">Edit</button>-
+              <button (click)="deleteItem(i)">Delete</button>
+            </div>
+          </li>
+        </ul>
+        <div class="add-item">
+          <input type="text" [(ngModel)]="newItemName" placeholder="Enter item name">
+          <button class="add-button" (click)="addItem()">Add Item</button>
+          <span>{{ newItemName }}</span>
+        </div>
+      </div>  
+  `,
+  styleUrls: ['../../ReactiveForm/reactive.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent {
+export class TemplateDrivenComponent {
   items: Item[] = [...items];
   newItemName = '';
 
