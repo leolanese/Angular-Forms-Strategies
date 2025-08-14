@@ -1,4 +1,4 @@
-# Angular (20+) Forms: `Template Driven`, `React Driven Template` and `Signal Driven` 
+# Angular (20+) Forms: `Signal` Vs `Template Driven` [(ngModule)] Vs `Reactive` [formControl] forms
 
 ## DEMO
 ![](./src/assets/image.png)
